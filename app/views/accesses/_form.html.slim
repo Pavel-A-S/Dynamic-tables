@@ -1,0 +1,20 @@
+- if not @access.blank?
+  = form_for @access do |f|
+    - if @access.errors.any?
+      #error_explanation
+        h2 = "#{t(:you_have_errors)}: #{@access.errors.count}"
+        ul
+          - @access.errors.full_messages.each do |message|
+            li = message
+    .form-group
+      = f.label :user_id, t(:user)
+      = f.select :user_id, User.all.map{ |i| [i.name, i.id] },
+                            { include_blank: true },
+                            { class: 'form-control' }
+    .form-group
+      = f.label :table_id, t(:table)
+      = f.select :table_id, Table.all.map{ |i| [i.name, i.id] },
+                            { include_blank: true },
+                            { class: 'form-control' }
+
+    = f.submit t(:confirm), class: 'btn btn-primary'

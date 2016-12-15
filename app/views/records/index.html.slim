@@ -1,0 +1,44 @@
+= link_to new_table_record_path(@table), class: 'btn btn-primary' do
+  span.glyphicon.glyphicon-plus
+  = t(:create_record)
+br
+br
+= link_to t(:tables), tables_path
+.table-responsive
+  table.table.table-striped.table-bordered.table-hover#order-table
+    thead
+      tr
+        th.text-center
+          = t(:created_at)
+        th.text-center
+          = t(:table_name)
+        th
+        th
+        th
+    tbody
+      - @records.each do |record|
+        tr
+          td data-order="#{record.created_at}"
+            = set_date(record.created_at)
+          td
+            = record.table.name
+          td
+            = link_to t(:show), record
+          td
+            = link_to t(:edit), edit_record_path(record) 
+          td
+            = link_to t(:delete), record, method: :delete, data: { confirm: t(:delete_confirmation) }
+script
+  |$('#order-table').dataTable({
+  |        "aLengthMenu": [[25, 50, -1], [25, 50, "All"]],
+  |        "iDisplayLength": 25,
+  |        "order": [[0, 'desc']],
+  |        "language": { "url": "#{root_url + '/assets/Russian.json'}" }
+  |    }).animate({opacity: 1})
+
+
+
+
+
+
+

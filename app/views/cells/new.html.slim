@@ -1,0 +1,7 @@
+- if @table
+  .cell_form_wrapper
+    h3 = t(:new_cell)
+    br
+    == render 'form'
+    br
+    = link_to t(:back), table_path(@table)

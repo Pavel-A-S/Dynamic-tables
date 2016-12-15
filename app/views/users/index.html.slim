@@ -1,0 +1,51 @@
+h3
+  = t(:users)
+br
+= link_to new_user_path, class: 'btn btn-primary' do
+  span.glyphicon.glyphicon-plus
+  = t(:create_user)
+br
+br
+
+.table-responsive
+  table.table.table-striped.table-bordered.table-hover#order-table
+    thead
+      tr
+        th.text-center
+          = t(:user_email)
+        th.text-center
+          = t(:user_name)
+        th.text-center
+          = t(:user_role)
+        th
+        th
+        th
+    tbody
+      - @users.each do |user|
+        tr
+          td
+            = user.email
+          td
+            = user.name
+          td
+            = t("#{user.role}")
+          td
+            = link_to t(:show), user
+          td
+            = link_to t(:edit), edit_user_path(user) 
+          td
+            = link_to t(:delete), user, method: :delete, data: { confirm: t(:delete_confirmation) }
+script
+  |$('#order-table').dataTable({
+  |        "aLengthMenu": [[25, 50, -1], [25, 50, "All"]],
+  |        "iDisplayLength": 25,
+  |        "order": [[0, 'desc']],
+  |        "language": { "url": "#{root_url + '/assets/Russian.json'}" }
+  |    }).animate({opacity: 1})
+
+
+
+
+
+
+

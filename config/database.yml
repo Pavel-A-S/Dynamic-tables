@@ -10,8 +10,14 @@ default: &default
   timeout: 5000
 
 development:
-  <<: *default
-  database: db/development.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: <%= ENV["DATA_BASE_LOGIN"] %>
+  password: <%= ENV["DATA_BASE_PASSWORD"] %>
+  host: localhost
+  socket: /var/run/mysqld/mysqld.sock
+  database: milky_way_database
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -21,5 +27,11 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: <%= ENV["DATA_BASE_LOGIN"] %>
+  password: <%= ENV["DATA_BASE_PASSWORD"] %>
+  host: localhost
+  socket: /var/run/mysqld/mysqld.sock
+  database: milky_way_database

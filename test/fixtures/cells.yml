@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  table_id: 1
+  coordinate_x: 1
+  coordinate_y: 1
+  cell_type: 1
+
+two:
+  table_id: 1
+  coordinate_x: 1
+  coordinate_y: 1
+  cell_type: 1

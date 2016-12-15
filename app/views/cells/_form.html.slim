@@ -1,0 +1,24 @@
+- if not @cell.blank?
+  = form_for [@table, @cell] do |f|
+    - if @cell.errors.any?
+      #error_explanation
+        h2 = "#{t(:you_have_errors)}: #{@cell.errors.count}"
+        ul
+          - @cell.errors.full_messages.each do |message|
+            li = message
+    .form-group
+      = f.label :coordinate_x, t(:coordinate_x)
+      = f.select :coordinate_x, available_x_coordinates(@table, @cell),
+                                { include_blank: true },
+                                { class: 'form-control' }
+    .form-group
+      = f.label :coordinate_y, t(:coordinate_y)
+      = f.select :coordinate_y, available_y_coordinates(@table, @cell),
+                                { include_blank: true },
+                                { class: 'form-control' }
+    .form-group
+      = f.label :cell_type, t(:cell_type)
+      = f.select :cell_type, Cell.cell_types.keys.map{ |i| [t("#{i}"), i] }, {},
+                              { class: 'form-control' }
+
+    = f.submit t(:confirm), class: 'btn btn-primary'

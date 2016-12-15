@@ -1,0 +1,28 @@
+- if not @cell.blank?
+  .panel.panel-default.cell_show_size
+    .panel-heading
+      h3.panel-title
+        b = t(:cell)
+    .panel-body
+      dl
+        dt
+          = t(:cell_type)
+        br
+        dd
+          = t("#{@cell.cell_type}")
+        br
+        dt
+          = t(:coordinate_x)
+        br
+        dd
+          = @cell.column.try(:name)
+        br
+        dt
+          = t(:coordinate_y)
+        br
+        dd
+          = @cell.row.try(:name)
+        br
+        = link_to t(:cells), table_path(@cell.table)
+        = ' | '
+        = link_to t(:edit), edit_cell_path(@cell)

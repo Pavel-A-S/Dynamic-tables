@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  record_id: 1
+  cell_id: 1
+  data: MyText
+
+two:
+  record_id: 1
+  cell_id: 1
+  data: MyText

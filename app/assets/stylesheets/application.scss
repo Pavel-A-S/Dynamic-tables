@@ -10,6 +10,14 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
+ * require_tree .
+ * require_self
+ *= require jquery.dataTables
+ *= require dataTables.bootstrap
  */
+
+  $screen-sm-min: 960px;
+
+  @import "bootstrap-sprockets";
+  @import "bootstrap";
+  @import "MySCSS";

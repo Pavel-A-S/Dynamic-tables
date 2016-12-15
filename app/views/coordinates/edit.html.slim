@@ -1,0 +1,9 @@
+- if not @coordinate.blank?
+  .coordinate_form_wrapper
+    h3 = t(:editing_coordinate)
+    br
+    == render 'form'
+    br
+    = link_to t(:show), @coordinate
+    = " | "
+    = link_to t(:back), @coordinate.table

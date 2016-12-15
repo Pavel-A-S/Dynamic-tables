@@ -1,0 +1,47 @@
+h3
+  = t(:accesses)
+br
+= link_to new_access_path, class: 'btn btn-primary' do
+  span.glyphicon.glyphicon-plus
+  = t(:create_access)
+br
+br
+
+.table-responsive
+  table.table.table-striped.table-bordered.table-hover#order-table
+    thead
+      tr
+        th.text-center
+          = t(:table)
+        th.text-center
+          = t(:user)
+        th
+        th
+        th
+    tbody
+      - @accesses.each do |access|
+        tr
+          td
+            = access.table.try(:name)
+          td
+            = access.user.try(:name)
+          td
+            = link_to t(:show), access
+          td
+            = link_to t(:edit), edit_access_path(access) 
+          td
+            = link_to t(:delete), access, method: :delete, data: { confirm: t(:delete_confirmation) }
+script
+  |$('#order-table').dataTable({
+  |        "aLengthMenu": [[25, 50, -1], [25, 50, "All"]],
+  |        "iDisplayLength": 25,
+  |        "order": [[0, 'desc']],
+  |        "language": { "url": "#{root_url + '/assets/Russian.json'}" }
+  |    }).animate({opacity: 1})
+
+
+
+
+
+
+

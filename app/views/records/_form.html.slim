@@ -1,0 +1,27 @@
+- if not @record.blank?
+  = form_for [@table, @record] do |f|
+    - if @record.errors.any?
+      #error_explanation
+        h2 = "#{t(:you_have_errors)}: #{@record.errors.count}"
+        ul
+          - @record.errors.full_messages.each do |message|
+            li = message
+    = f.fields_for :record_cells do |ff|
+      - @coordinates_x.each do |x|
+        - @coordinates_y.each do |y|
+          - if rc = Cell.find_by(coordinate_x: x.id, coordinate_y: y.id, table_id: y.table_id)
+            - if rc.integer?
+              .form-group
+                = ff.label "data_#{rc.id}", cell_name(rc)
+                = ff.number_field "data_#{rc.id}", value: set_value(rc, @record.id, @valid_values), class: 'form-control'
+
+            - if rc.decimal?
+              .form-group
+                = ff.label "data_#{rc.id}", cell_name(rc)
+                = ff.number_field "data_#{rc.id}", value: set_value(rc, @record.id, @valid_values), class: 'form-control', step: 'any'
+            - if rc.text?
+              .form-group
+                = ff.label "data_#{rc.id}", cell_name(rc)
+                = ff.text_area "data_#{rc.id}", value: set_value(rc, @record.id, @valid_values), class: 'form-control', rows: '3'
+
+    = f.submit t(:confirm), class: 'btn btn-primary'

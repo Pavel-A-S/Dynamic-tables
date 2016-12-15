@@ -1,0 +1,9 @@
+- if not @record.blank?
+  .record_form_wrapper
+    h3 = t(:editing_record)
+    br
+    == render 'form'
+    br
+    = link_to t(:show), @record
+    = " | "
+    = link_to t(:back), table_records_path(@record.table)

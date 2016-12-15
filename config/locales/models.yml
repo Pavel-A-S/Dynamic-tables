@@ -1,0 +1,202 @@
+ru:
+  activerecord:
+    attributes:
+      user:
+        name: "Имя"
+        email: "Почта"
+        password: "Пароль"
+        password_confirmation: "Подтверждение пароля"
+      table:
+        name: "Название"
+      coordinate:
+        name: "Название"
+        disposition: "Расположение"
+        superior_id: "Главная координата (x-координата)"
+        order: "Порядок отображения"
+      cell:
+        coordinate_x: "X-координата (столбец)"
+        coordinate_y: "Y-координата (строка)"
+        cell_type: "Тип данных клетки"
+      integer_cell:
+        data: "Данные"
+      decimal_cell:
+        data: "Данные"
+      text_cell:
+        data: "Данные"
+      access:
+        table_id: "Таблица"
+        user_id: "Пользователь"
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "- нужно указать."
+              too_long:
+                other: "- 48 символов максимум"
+            email:
+              blank: "- нужно указать."
+              too_long: "- очень длинный."
+              invalid: "- что-то с ней не так."
+              taken: "- уже существует в системе."
+            password:
+              blank: "- нужно указать."
+              too_short:
+                other: "- должно быть не меньше 8 символов."
+            password_confirmation:
+              confirmation: "- должно совпадать с паролем."
+        table:
+          attributes:
+            name:
+              blank: "- нужно указать."
+              too_long:
+                other: "- 250 символов максимум"
+        coordinate:
+          attributes:
+            name:
+              blank: "- нужно указать."
+              too_long:
+                other: "- 250 символов максимум"
+            disposition:
+              blank: "- нужно указать."
+            superior_id:
+              blank: "- нужно указать."
+            order:
+              not_a_number: "- нужно указать (проверьте значение)."
+              less_than: "- должен быть меньше"
+              greater_than: "- должен быть больше"
+        cell:
+          attributes:
+            coordinate_x:
+              blank: "- нужно указать."
+            coordinate_y:
+              blank: "- нужно указать."
+            cell_type:
+              blank: "- нужно указать."
+        integer_cell:
+          attributes:
+            data:
+              not_a_number: "- нужно указать (проверьте значение)."
+              less_than: "- значение должно быть меньше"
+              greater_than: "- значение должно быть больше"
+        decimal_cell:
+          attributes:
+            data:
+              not_a_number: "- нужно указать (проверьте значение)."
+              less_than: "- значение должно быть меньше"
+              greater_than: "- значение должно быть больше"
+        text_cell:
+          attributes:
+            data:
+              blank: "- нужно указать."
+              too_long:
+                other: "- 250 символов максимум"
+        access:
+          attributes:
+            table_id:
+              blank: "- нужно указать."
+            user_id:
+              blank: "- нужно указать."
+      messages:
+        record_invalid: "данные не прошли валидацию"
+en:
+  activerecord:
+    attributes:
+      user: 
+        name: "Name"
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+      table:
+        name: "Name"
+      coordinate:
+        name: "Name"
+        disposition: "Disposition"
+        superior_id: "Superior coordinate (x-coordinate)"
+        order: "Order"
+      cell:
+        coordinate_x: "X-coordinate"
+        coordinate_y: "Y-coordinate"
+        cell_type: "Type of data in the cell"
+      integer_cell:
+        data: "Data"
+      decimal_cell:
+        data: "Data"
+      text_cell:
+        data: "Data"
+      access:
+        table_id: "Table"
+        user_id: "User"
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "must be present."
+              too_long:
+                other: "too long - 48 symbols maximum."
+            email:
+              blank: "must be present."
+              too_long: "unnecessarily long."
+              invalid: "looks wrong!"
+              taken: "- has been registered before."
+            password:
+              blank: "must be present."
+              too_short:
+                other: "must not be less than 8 symbols."
+            password_confirmation:
+              confirmation: "wrong."
+        table:
+          attributes:
+            name:
+              blank: "must be present."
+              too_long:
+                other: "too long - 250 symbols maximum."
+        coordinate:
+          attributes:
+            name:
+              blank: "must be present."
+              too_long:
+                other: "too long - 250 symbols maximum."
+            disposition:
+              blank: "must be present."
+            superior_id:
+              blank: "must be present."
+            order:
+              not_a_number: "must be present. (check value)."
+              less_than: "must be less"
+              greater_than: "must be more"
+        cell:
+          attributes:
+            coordinate_x:
+              blank: "must be present."
+            coordinate_y:
+              blank: "must be present."
+            cell_type:
+              blank: "must be present."
+        integer_cell:
+          attributes:
+            data:
+              not_a_number: "must be present. (check value)."
+              less_than: "must be less"
+              greater_than: "must be more"
+        decimal_cell:
+          attributes:
+            data:
+              not_a_number: "must be present. (check value)."
+              less_than: "must be less"
+              greater_than: "must be more"
+        text_cell:
+          attributes:
+            data:
+              blank: "must be present."
+              too_long:
+                other: "too long - 250 symbols maximum."
+        access:
+          attributes:
+            table_id:
+              blank: "must be present."
+            user_id:
+              blank: "must be present."
+      messages:
+        record_invalid: "data isn't valid"

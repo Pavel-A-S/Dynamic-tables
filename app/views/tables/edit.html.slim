@@ -1,0 +1,9 @@
+- if not @table.blank?
+  .table_form_wrapper
+    h3 = t(:editing_table)
+    br
+    == render 'form'
+    br
+    = link_to t(:show), @table
+    = " | "
+    = link_to t(:back), tables_path

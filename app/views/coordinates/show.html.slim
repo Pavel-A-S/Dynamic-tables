@@ -1,0 +1,34 @@
+- if not @coordinate.blank?
+  .panel.panel-default.coordinate_show_size
+    .panel-heading
+      h3.panel-title
+        b = t(:coordinate)
+    .panel-body
+      dl
+        dt
+          = t(:coordinate_name)
+        br
+        dd
+          = @coordinate.name
+        br
+        dt
+          = t(:coordinate_disposition)
+        br
+        dd
+          = t("#{@coordinate.disposition}")
+        br
+        dt
+          = t(:coordinate_superior)
+        br
+        dd
+          = @coordinate.superior.try(:name)
+        br
+        dt
+          = t(:coordinate_order)
+        br
+        dd
+          = @coordinate.order
+        br
+        = link_to t(:coordinates), table_path(@coordinate.table)
+        = ' | '
+        = link_to t(:edit), edit_coordinate_path(@coordinate)

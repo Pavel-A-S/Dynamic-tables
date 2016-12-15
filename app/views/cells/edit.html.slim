@@ -1,0 +1,9 @@
+- if not @cell.blank?
+  .cell_form_wrapper
+    h3 = t(:editing_cell)
+    br
+    == render 'form'
+    br
+    = link_to t(:show), @cell
+    = " | "
+    = link_to t(:back), @cell.table

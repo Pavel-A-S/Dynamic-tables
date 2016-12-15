@@ -1,0 +1,13 @@
+- if not @table.blank?
+  = form_for @table do |f|
+    - if @table.errors.any?
+      #error_explanation
+        h2 = "#{t(:you_have_errors)}: #{@table.errors.count}"
+        ul
+          - @table.errors.full_messages.each do |message|
+            li = message
+    .form-group
+      = f.label :name, t(:table_name)
+      = f.text_area :name, class: "form-control", rows: '3'
+
+    = f.submit t(:confirm), class: 'btn btn-primary'

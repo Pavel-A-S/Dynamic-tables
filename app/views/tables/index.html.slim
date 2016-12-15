@@ -1,0 +1,45 @@
+h3
+  = t(:tables)
+br
+- if @tables
+  - if current_user.administrator?
+    = link_to new_table_path, class: 'btn btn-primary' do
+      span.glyphicon.glyphicon-plus
+      = t(:create_table)
+    br
+    br
+
+  .table-responsive
+    table.table.table-striped.table-bordered.table-hover#order-table
+      thead
+        tr
+          th.text-center
+            = t(:created_at)
+          th.text-center
+            = t(:table_name)
+          - if current_user.administrator?
+            th
+            th
+            th
+      tbody
+        - @tables.each do |table|
+          tr
+            td data-order="#{table.created_at}"
+              = set_date(table.created_at)
+            td
+              = link_to table.name, table_records_path(table.id)
+            - if current_user.administrator?
+              td
+                = link_to t(:show_table_schema), table
+              td
+                = link_to t(:edit_table_name), edit_table_path(table) 
+              td
+                = link_to t(:delete_table), table, method: :delete, data: { confirm: t(:delete_confirmation) }
+script
+  |$('#order-table').dataTable({
+  |        "aLengthMenu": [[25, 50, -1], [25, 50, "All"]],
+  |        "iDisplayLength": 25,
+  |        "order": [[0, 'desc']],
+  |        "language": { "url": "#{root_url + '/assets/Russian.json'}" }
+  |    }).animate({opacity: 1})
+

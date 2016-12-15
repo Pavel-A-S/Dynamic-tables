@@ -1,0 +1,23 @@
+- if not @access.blank?
+  .panel.panel-default.access_show_size
+    .panel-heading
+      h3.panel-title
+        b = t(:access)
+    .panel-body
+      dl
+        dt
+          = t(:table)
+        br
+        dd
+          = @access.table.try(:name)
+        br
+        dt
+          = t(:user)
+        br
+        dd
+          = @access.user.try(:name)
+        br
+        = link_to t(:accesses), accesses_path
+        = ' | '
+        = link_to t(:edit), edit_access_path(@access)
+

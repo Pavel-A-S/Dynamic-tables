@@ -1,0 +1,26 @@
+- if not @coordinate.blank?
+  = form_for [@table, @coordinate] do |f|
+    - if @coordinate.errors.any?
+      #error_explanation
+        h2 = "#{t(:you_have_errors)}: #{@coordinate.errors.count}"
+        ul
+          - @coordinate.errors.full_messages.each do |message|
+            li = message
+    .form-group
+      = f.label :name, t(:coordinate_name)
+      = f.text_area :name, class: "form-control", rows: '3'
+
+    .form-group
+      = f.label :disposition, t(:coordinate_disposition)
+      = f.select :disposition, Coordinate.dispositions.keys.map{ |i| [t("#{i}"), i] }, {},
+                                { class: 'form-control' }
+    .form-group
+      = f.label :superior_id, t(:coordinate_superior)
+      = f.select :superior_id, available_coordinates(@table, @coordinate),
+                                { include_blank: true },
+                                { class: 'form-control' }
+    .form-group
+      = f.label :order, t(:coordinate_order)
+      = f.number_field :order, class: 'form-control'
+
+    = f.submit t(:confirm), class: 'btn btn-primary'

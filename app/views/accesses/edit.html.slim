@@ -1,0 +1,9 @@
+- if not @access.blank?
+  .access_form_wrapper
+    h3 = t(:editing_access)
+    br
+    == render 'form'
+    br
+    = link_to t(:show), @access
+    = " | "
+    = link_to t(:back), accesses_path

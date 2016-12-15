@@ -1,0 +1,61 @@
+- if not @table.blank?
+  h3
+    = "#{t(:table_schema)} #{@table.name}"
+  br
+
+  = link_to new_table_coordinate_path(@table), class: 'btn btn-primary' do
+    span.glyphicon.glyphicon-plus
+    = t(:create_coordinate)
+  = "  "
+  = link_to new_table_cell_path(@table), class: 'btn btn-primary' do
+    span.glyphicon.glyphicon-plus
+    = t(:create_cell)
+  br
+  br
+  br
+
+  - if not @coordinates_x.blank?
+    .table-responsive
+      table.table.table-striped.table-bordered.table-hover
+        tr
+          - @coordinates_x.each do |c|
+            td.text-center
+              b
+                = c.name
+              br
+              = link_to t(:show), c
+              br
+              = link_to t(:edit), edit_coordinate_path(c)
+              br
+              = link_to t(:delete), c, method: :delete, data: { confirm: t(:delete_confirmation) }
+        - if not @coordinates_y.blank?
+          - @coordinates_y.each do |c|
+            tr
+              - @coordinates_x.each do |x|
+                - if c.superior_id == x.id
+                  td.text-center
+                    b
+                      = c.name
+                    br
+                    = link_to t(:show), c
+                    br
+                    = link_to t(:edit), edit_coordinate_path(c)
+                    br
+                    = link_to t(:delete), c, method: :delete, data: { confirm: t(:delete_confirmation) }
+                - elsif @cells && cell = @cells.find_by(coordinate_x: x.id,
+                                                        coordinate_y: c.id)
+                  td.text-center
+                    = t("#{cell.cell_type}")
+                    br
+                    = link_to t(:show), cell
+                    br
+                    = link_to t(:edit), edit_cell_path(cell)
+                    br
+                    = link_to t(:delete), cell, method: :delete, data: { confirm: t(:delete_confirmation) }
+                - else
+                  td.text-center
+                    | Nothing
+  = link_to t(:tables), tables_path
+  = ' | '
+  = link_to t(:edit_table_name), edit_table_path(@table)
+
