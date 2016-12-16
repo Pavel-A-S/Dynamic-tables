@@ -11,6 +11,7 @@ ru:
   back: "Назад"
   confirm: "Подтвердить"
   delete_confirmation: "Удалить?"
+  no_data: "Нет данных"
   # Devise - view
   password_recovery_title: "Восстановить пароль?"
   log_in: "Вход"
@@ -148,6 +149,7 @@ en:
   back: "Back"
   confirm: "Confirm"
   delete_confirmation: "Delete?"
+  no_data: "No data"
   # Devise - view
   password_recovery_title: "Forgot your password?"
   log_in: "Log in"

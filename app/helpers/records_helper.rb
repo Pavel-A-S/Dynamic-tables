@@ -31,4 +31,17 @@ module RecordsHelper
     return value
   end
 
+
+  def define_data(record_id, cell)
+    if cell.integer?
+      IntegerCell.find_by(record_id: record_id, cell_id: cell.id)
+    elsif cell.decimal?
+      DecimalCell.find_by(record_id: record_id, cell_id: cell.id)
+    elsif cell.text?
+      TextCell.find_by(record_id: record_id, cell_id: cell.id)
+    end
+  end
+
+
+
 end

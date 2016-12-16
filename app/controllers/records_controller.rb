@@ -170,14 +170,16 @@ class RecordsController < ApplicationController
 
   private
     def check_access
-      if @table
-        table_id = @table.id
-      elsif @record
-        table_id = @record.table.id
-      else
-        table_id = nil
+      if !current_user.administrator?
+        if @table
+          table_id = @table.id
+        elsif @record
+          table_id = @record.table.id
+        else
+          table_id = nil
+        end
+        return if !accessible?(table_id)
       end
-      return if !accessible?(table_id)
     end
 
     def set_coordinates(table_id, type)

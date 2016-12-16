@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  has_many :accesses
+  has_many :accesses, dependent: :delete_all
   has_many :tables, through: :accesses
 
   enum role: [:foreman, :cfo, :administrator]

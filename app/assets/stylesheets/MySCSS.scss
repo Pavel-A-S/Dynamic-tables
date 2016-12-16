@@ -152,6 +152,20 @@
 
 //------------------------------------------------------------------------------
 
+.not-stretched {
+  display: inline-block;
+}
+
+.coordinate-name {
+  font-weight: bold;
+}
+
+.cell-property {
+  max-width: 600px;
+  word-wrap: break-word;
+}
+
+//------------------------------------------------------------------------------
 .main-footer {
   position: fixed; bottom: 0; left: 0;
   width: 100%;
