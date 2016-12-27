@@ -26,6 +26,8 @@ ru:
       access:
         table_id: "Таблица"
         user_id: "Пользователь"
+      record:
+        date: "Дата"
     errors:
       models:
         user:
@@ -127,6 +129,8 @@ en:
       access:
         table_id: "Table"
         user_id: "User"
+      record:
+        date: "Date"
     errors:
       models:
         user:

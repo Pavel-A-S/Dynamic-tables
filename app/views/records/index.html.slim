@@ -18,8 +18,8 @@ br
     tbody
       - @records.each do |record|
         tr
-          td data-order="#{record.created_at}"
-            = set_date(record.created_at)
+          td data-order="#{record.date}"
+            = set_date(record.date)
           td
             = record.table.name
           td

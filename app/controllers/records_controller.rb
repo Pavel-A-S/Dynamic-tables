@@ -19,12 +19,13 @@ class RecordsController < ApplicationController
   end
 
   def edit
+    @record.date += @record.date.localtime.utc_offset if @record.date
     @coordinates_x = set_coordinates(@record.table_id, :row)
     @coordinates_y = set_coordinates(@record.table_id, :column)
   end
 
   def create
-    @record = Record.new
+    @record = Record.new(record_params)
     @record.table_id = @table.id
 
     if params[:record].is_a?(Hash) &&
@@ -56,7 +57,8 @@ class RecordsController < ApplicationController
             result.errors.each do |k, v|
               column_name = @cell.column.try(:name) if @cell
               row_name = @cell.row.try(:name) if @cell
-              errors << "#{row_name} (#{column_name}) #{v}"
+              # errors << "#{row_name} (#{column_name}) #{v}"
+              errors << "#{row_name} #{v}"
             end
             validation = 'errors'
           end
@@ -127,14 +129,15 @@ class RecordsController < ApplicationController
             result.errors.each do |k, v|
               column_name = @cell.column.try(:name) if @cell
               row_name = @cell.row.try(:name) if @cell
-              errors << "#{row_name} (#{column_name}) #{v}"
+              # errors << "#{row_name} (#{column_name}) #{v}"
+              errors << "#{row_name} #{v}"
             end
             validation = 'errors'
           end
         end
       end
 
-      if validation != 'errors'
+      if validation != 'errors' && @record.update(record_params)
         results.each { |r| r.save }
         flash[:message] = t(:record_was_updated)
         redirect_to @record
@@ -198,5 +201,9 @@ class RecordsController < ApplicationController
       if @table.blank?
         redirect_to root_path
       end
+    end
+
+    def record_params
+      params.require(:record).permit(:date)
     end
 end

@@ -6,6 +6,11 @@
         ul
           - @record.errors.full_messages.each do |message|
             li = message
+    .form-group
+      = f.label :date, t(:created_at)
+      br
+      = f.date_select :date, default: DateTime.now, class: "form-control"
+
     = f.fields_for :record_cells do |ff|
       - @coordinates_x.each do |x|
         - @coordinates_y.each do |y|
